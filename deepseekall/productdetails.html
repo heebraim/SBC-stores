@@ -1,0 +1,44 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Details - SBCNG</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="productdetails.js"><link rel="stylesheet" href="productdetails.css">
+  <style></style>
+</head>
+<body>
+  <!-- Back Button -->
+  <button class="back-button" id="backButton">
+    <i class="fas fa-chevron-left"></i>
+  </button>
+
+  <!-- Cart Icon -->
+  <div class="cart-icon" id="cartIcon">
+    <i class="fas fa-shopping-cart" style="font-size: 1.5em; color: orangered;"></i>
+    <span class="cart-count" id="cartCount">0</span>
+  </div>
+
+  <img id="product-img" src="" alt="Product Image">
+  <div class="details">
+    <h1 id="product-name"></h1>
+    <div class="price-tag" id="product-price"></div>
+    <p class="description" id="product-description"></p>
+    
+    <div class="quantity-controls">
+      <button class="quantity-btn" id="decrease-qty">-</button>
+      <span class="quantity-display" id="quantity">1</span>
+      <button class="quantity-btn" id="increase-qty">+</button>
+    </div>
+    
+    <button id="add-to-cart">Add to Cart</button>
+  </div>
+
+  <script type="module" src="productdetails.js"></script>
+</body>
+</html>

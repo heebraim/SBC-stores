@@ -1,0 +1,68 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Profile - SBCNG</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="profile.css"><link rel="stylesheet" href="profile.js">
+  <style></style>
+</head>
+<body>
+  <!-- Loader -->
+  <div class="loader-container" id="loaderContainer">
+    <div class="loader" id="loader"></div>
+    <!-- <img src="" alt="Store Icon" class="store-image"> -->
+    
+  </div>
+
+  <!-- Image Overlay -->
+  <div class="image-overlay" id="imageOverlay">
+    <img src="" alt="Enlarged Profile">
+  </div>
+
+  <!-- Back Button -->
+  <button class="back-button" id="backButton">
+    <i class="fas fa-chevron-left"></i>
+  </button>
+
+  <!-- Profile Content -->
+  <div class="profile-container">
+    <button class="logout-btn" id="logoutBtn">Logout</button>
+    <div style="position: relative; display: inline-block;">
+      <img src="" alt="Profile" class="profile-pic" id="profileImg">
+      <div class="camera-icon" id="cameraIcon">
+        <i class="fas fa-camera"></i>
+      </div>
+    </div>
+    <h2 id="profileName">User Profile</h2>
+    <div class="profile-item">
+      <label>Email:</label> <span id="profileEmail"></span>
+    </div>
+    <div class="profile-item">
+      <label>First Name:</label> <span id="firstName"></span>
+    </div>
+    <div class="profile-item">
+      <label>Last Name:</label> <span id="lastName"></span>
+    </div>
+    <div class="profile-item">
+      <label>Phone:</label> <span id="phone"></span>
+    </div>
+    <!-- Orders Button -->
+    <button class="orders-btn" id="ordersBtn">View Orders</button>
+  </div>
+
+  <!-- Orders Modal -->
+  <div class="modal" id="ordersModal">
+    <div class="modal-content">
+      <button class="modal-close" id="modalClose">&times;</button>
+      <h2>Your Orders</h2>
+      <div id="ordersList"></div>
+    </div>
+  </div>
+
+  <script type="module" src="profile.js"></script>
+</body>
+</html>

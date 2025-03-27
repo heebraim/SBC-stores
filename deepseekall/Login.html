@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login - SBCNG</title>
+  <link rel="stylesheet" href="login.css">
+  <style> </style>
+</head>
+<body>
+  <h1>SBC<sub>NG</sub></h1>
+
+   <div class="shippingicons"> 
+    
+      <div> <img src="iconamoon--delivery-fast-light.svg" alt="" > <p><b style="font-size: medium;">Fast shipping <br> on all orders</b></p></div>
+      <div> <img src="tdesign--store.svg" alt="" > <p><b style="font-size: medium;"> Return within <br> 21d from purchase</b></p></div>
+      
+   </div>
+
+  <div class="container">
+    <h2>Login</h2>
+    <form id="loginForm">
+      <input type="email" id="loginEmail" placeholder="Email" value="">
+      <div class="password-container">
+        <input type="password" id="loginPassword" placeholder="Password" />
+        <span class="toggle-password" id="toggleLoginPassword">👁️</span>
+      </div>
+      <button type="button" class="login-btn" id="loginSubmit">Login</button>
+    </form>
+    <a href="passwordReset.html" class="forgot-link">Forgot Password?</a>
+  </div>
+
+  <div id="messagePopup" class="message-popup"></div>
+
+  <script type="module" src="login.js"> </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Complete Registration - SBCNG</title>
+  <link rel="stylesheet" href="signup.css">
+  <style></style>
+</head>
+<body>
+  <h1>SBC<sub>NG</sub></h1>
+  <div class="container">
+    <h2>Complete Registration</h2>
+    <form id="signupForm">
+      <input type="email" id="email" placeholder="Email" required>
+      
+      <div class="password-container">
+        <input type="password" id="password" placeholder="Minimum 8 characters" required>
+        <span class="toggle-password" id="togglePassword">👁️</span>
+      </div>
+
+      <div id="additionalFields" class="hidden">
+        <input type="text" id="firstName" placeholder="First Name" required>
+        <input type="text" id="lastName" placeholder="Last Name" required>
+        
+        <div class="phone-input">
+          <select id="countryCode" required>
+            <option value="+234">+234 (NG)</option>
+            <option value="+1">+1 (US)</option>
+            <option value="+44">+44 (UK)</option>
+          </select>
+          <input type="tel" id="telephone" placeholder="Phone Number" required>
+        </div>
+      </div>
+
+      <label class="terms">
+        <input type="checkbox" id="termsCheckbox" required>
+        <span>By registering, you agree to our<br>
+          <a href="#" target="_blank">Terms</a> and 
+          <a href="#" target="_blank">Privacy Policy</a>
+        </span>
+      </label>
+
+      <button type="submit" class="register-btn">Create Account</button>
+    </form>
+  </div>
+
+  <div id="messagePopup" class="message-popup"></div>
+
+  <script type="module" src="signup.js"> </script>
+</body>
+</html>

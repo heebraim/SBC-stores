@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Email Verification - SBCNG</title>
+  <link rel="stylesheet" href="email.css">
+  <style>
+    
+  </style>
+</head>
+<body>
+  <h1>SBC<sub>NG</sub></h1>
+  <div class="container">
+    <h2>Please Enter Your Email</h2>
+    <input type="email" id="userEmail" placeholder="Enter your email" list="emailSuggestions">
+    <datalist id="emailSuggestions">
+      <option value="@gmail.com">
+      <option value="@yahoo.com">
+      <option value="@outlook.com">
+      <option value="@hotmail.com">
+    </datalist>
+    <button id="continueBtn">Continue</button>
+    <div class="message" id="message"></div>
+    <button id="loginBtn" style="display: none;">Login</button>
+  </div>
+
+  <script type="module" src="email.js">
+   
+  </script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+
+* { box-sizing: border-box; 
+    font-family: cursive;
+    }
+  body {
+    margin: 0;
+    padding: 20px;
+    background-color: #f9f9f9;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  .container {
+    width: 90%;
+    max-width: 375px;
+    text-align: center;
+  }
+  .auth-button {
+    padding: 15px;
+    margin: 10px 0;
+    font-size: 1em;
+    border: none;
+    border-radius: 35px;
+    width: 100%;
+    cursor: pointer;
+  }
+  .email-btn { background-color: orangered; color: #fff }
+  .google-btn { background-color: #db4437; color: #fff }
+  .login-btn { background-color: orange; color: #fff }
+  .auth-button:hover { opacity: 0.9 }
+  sub { font-size: 10px; font-family: Verdana; font-weight: 900; color: black }
+  h1 { font-family: cursive; color: orangered }
+
+  .shippingicons{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2em;
+    width: 100%;
+    text-align: center;
+  }
+  .shippingicons div{
+    height: 5%;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  
+  .shippingicons img{
+    border-radius: 50%;
+    width: 50px;
+    background-color:rgb(253, 209, 151);
+  }
+

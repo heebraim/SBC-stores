@@ -1,0 +1,28 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Cart - SBCNG</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="cart.css">
+  <style></style>
+</head>
+<body>
+  <!-- Back Button -->
+  <button class="back-button" id="backButton">
+    <i class="fas fa-chevron-left"></i>
+  </button>
+
+  <div class="cart-container">
+    <div id="cart-items"></div>
+    <div id="empty-message" style="display: none;">Your cart is empty</div>
+    <div id="checkout-section">
+      <button id="checkout-btn">Checkout (0 items) - ₦0.00</button>
+    </div>
+  </div>
+
+  <script type="module" src="cart.js"></script>
+</body>
+</html>

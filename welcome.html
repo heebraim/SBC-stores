@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome - SBCNG</title>
+  <link rel="stylesheet" href="welcome.css">
+  <style>
+    
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <div class="modal-overlay" id="modalOverlay"></div>
+  <div class="auth-modal" id="authModal">
+    <h2>Sign In Required</h2>
+    <p>Only registered users can add to cart or view cart</p>
+    <button class="auth-button" onclick="window.location.href='deepseekall/index.html'">
+      Sign In / Register
+    </button>
+  </div>
+
+  <div class="search-cart-container">
+    <div class="search-bar">
+      <input type="text" placeholder="Search products or categories..." id="searchInput">
+      <div class="search-suggestions" id="searchSuggestions"></div>
+      <i class="fas fa-search" style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%);"></i>
+    </div>
+    <div class="cart-icon" id="cartIcon">
+      <i class="fas fa-shopping-cart" style="font-size: 1.5em; color: orangered;"></i>
+    </div>
+  </div>
+
+  <div class="categories-bar">
+    <div class="category-chip active" data-category="uncategorized">All Products</div>
+    <div class="category-chip" data-category="men">Men</div>
+    <div class="category-chip" data-category="electronics">Electronics</div>
+    <div class="category-chip" data-category="women">Women</div>
+    <div class="category-chip" data-category="home">Home</div>
+    <div class="category-chip" data-category="sports">Sports</div>
+    <div class="category-chip" data-category="kids">Kids</div>
+    <div class="category-chip" data-category="toys">Toys</div>
+    <div class="category-chip" data-category="appliances">Appliances</div>
+  </div>
+
+  <main>
+    <div id="products-container">Loading products...</div>
+  </main>
+
+  <script type="module" src="welcome.js"></script>
+</body>
+</html>

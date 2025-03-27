@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Details - SBCNG</title>
+  <link rel="stylesheet" href="welcomeproductdetails.css">
+  <style></style>
+</head>
+<body>
+  <div class="modal-overlay" id="modalOverlay"></div>
+  <div class="auth-modal" id="authModal">
+    <h2>Sign In Required</h2>
+    <p>Only registered users can add to cart</p>
+    <button class="auth-button" onclick="window.location.href='deepseekall/index.html'">
+      Sign In / Register
+    </button>
+  </div>
+
+  <img id="product-img" src="" alt="Product Image">
+  <div class="details">
+    <h1 id="product-name"></h1>
+    <div class="price-tag" id="product-price"></div>
+    <p class="description" id="product-description"></p>
+    <button id="add-to-cart">Add to Cart</button>
+  </div>
+
+  <script type="module" src="welcomeproductdetails.js"></script>
+</body>
+</html>

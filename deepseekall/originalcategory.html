@@ -1,0 +1,430 @@
+we have to do same for our category.js ,i.e the aligning of text in product card, making it start from left and all we added for the cart and plus/minus button also
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Category - SBCNG</title>
+  <link rel="stylesheet" href="category.css">
+  <style>   
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    /* font-family: Arial, sans-serif; */
+    font-family: cursive;
+  }
+  body {
+    background-color: #f9f9f9;
+    padding: 20px;
+  }
+
+  /* Back Button Styles */
+  .back-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+    background: orangered;
+    color: white;
+    padding: 10px;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .back-button i {
+    font-size: 1.5em;
+  }
+
+  .cart-icon {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    background: white;
+    padding: 10px;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    cursor: pointer;
+  }
+  .cart-count {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: red;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 0.8em;
+  }
+  #products-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .product {
+    background: white;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    text-align: center;
+    position: relative;
+  }
+  .product.disabled {
+    opacity: 0.6;
+    pointer-events: none;
+  }
+  .product img {
+    width: 100%;
+    height: 120px;
+    object-fit: contain;
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+  .price-cart-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 8px;
+  }
+  .product button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    position: static;
+    margin-left: auto;
+  }
+  .product button i {
+    font-size: 1.2em;
+    color: #000;
+    transition: color 0.3s ease;
+  }
+  .product button:hover i {
+    color: orangered;
+  }
+  .product p {
+    margin: 8px 0;
+    font-weight: bold;
+    text-align: left;
+  }
+  .rating-stock {
+    display: block;
+    margin: 8px 0;
+  }
+  .rating {
+    display: flex;
+    gap: 2px;
+  }
+  .rating i {
+    color: orangered;
+    font-size: 0.9em;
+  }
+  .stock-count {
+    font-size: 0.8em;
+    padding: 3px 8px;
+    border-radius: 10px;
+    background: #e8f5e9;
+    color: #2e7d32;
+  }
+  .stock-count.out-of-stock {
+    background: #ffebee;
+    color: #c62828;
+  }
+  .error-notification {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #ff4444;
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    z-index: 1000;
+    animation: slideIn 0.3s ease-out;
+  }
+  @keyframes slideIn {
+    from { top: -50px; }
+    to { top: 20px; }
+  }
+
+</style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <!-- Back Button -->
+  <button class="back-button" id="backButton">
+    <i class="fas fa-chevron-left"></i>
+  </button>
+
+  <!-- Cart Icon -->
+  <div class="cart-icon" id="cartIcon">
+    <i class="fas fa-shopping-cart" style="font-size: 1.5em; color: orangered;"></i>
+    <span class="cart-count" id="cartCount">0</span>
+  </div>
+
+  <!-- Main Content -->
+  <main>
+    <div id="products-container">Loading products...</div>
+  </main>
+
+  <script type="module" src="category.js">
+   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+import { 
+  getAuth, 
+  onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+import { 
+  getFirestore, 
+  collection, 
+  doc,
+  getDoc,
+  setDoc,
+  updateDoc,
+  arrayUnion,
+  onSnapshot,
+  query,
+  where
+} from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBJvC26AJCiGOmjFD1CgG4Qc6kD72hl8qk",
+  authDomain: "myecommercesite-d4f9b.firebaseapp.com",
+  projectId: "myecommercesite-d4f9b",
+  storageBucket: "myecommercesite-d4f9b.appspot.com",
+  messagingSenderId: "330763504718",
+  appId: "1:330763504718:web:d1c610bdf1bcf6f24f071f"
+};
+
+const MAX_CART_ITEMS = 90;
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+let currentUser = null;
+let unsubscribeProducts = null;
+let unsubscribeCart = null;
+
+function createRatingStars(rating) {
+  const fullStars = Math.floor(rating);
+  const halfStar = rating % 1 >= 0.5 ? 1 : 0;
+  const emptyStars = 5 - fullStars - halfStar;
+  
+  let starsHtml = '';
+  for (let i = 0; i < fullStars; i++) starsHtml += '<i class="fas fa-star"></i>';
+  if (halfStar) starsHtml += '<i class="fas fa-star-half-alt"></i>';
+  for (let i = 0; i < emptyStars; i++) starsHtml += '<i class="far fa-star"></i>';
+  return `<div class="rating">${starsHtml}</div>`;
+}
+
+onAuthStateChanged(auth, async (user) => {
+  if (user) {
+    currentUser = user;
+    await initializeUserCart();
+    updateCartCount();
+    loadProducts();
+  } else {
+    window.location.href = 'index.html';
+  }
+});
+
+async function initializeUserCart() {
+  const userCartRef = doc(db, "users", currentUser.uid);
+  const docSnap = await getDoc(userCartRef);
+  if (!docSnap.exists()) {
+    await setDoc(userCartRef, { cart: [] });
+  }
+  unsubscribeCart = onSnapshot(userCartRef, () => updateCartCount());
+}
+
+function loadProducts() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const category = urlParams.get('category');
+  
+  const productsContainer = document.getElementById('products-container');
+  productsContainer.innerHTML = 'Loading products...';
+
+  if (unsubscribeProducts) unsubscribeProducts();
+  
+  const productsQuery = query(
+    collection(db, 'products'), 
+    where('category', '==', category)
+  );
+
+  unsubscribeProducts = onSnapshot(productsQuery, (snapshot) => {
+    productsContainer.innerHTML = '';
+    snapshot.forEach(doc => {
+      const productData = doc.data();
+      if (productData.name && productData.price && productData.imageUrl) {
+        const product = {
+          id: doc.id,
+          name: productData.name,
+          price: productData.price,
+          imageUrl: productData.imageUrl,
+          description: productData.description || '',
+          rating: productData.rating || 0,
+          stock: productData.stock || 0,
+          quantity: 1
+        };
+        
+        const productElement = createProductElement(product);
+        productsContainer.appendChild(productElement);
+      }
+    });
+  }, (error) => {
+    console.error('Error loading products:', error);
+    productsContainer.innerHTML = 'Failed to load products';
+  });
+}
+
+function createProductElement(product) {
+  const productElement = document.createElement('div');
+  productElement.className = `product ${product.stock < 1 ? 'disabled' : ''}`;
+
+  productElement.innerHTML = `
+    <img src="${product.imageUrl}" alt="${product.name}">
+    <h3>${product.name}</h3>
+    <div class="rating-stock">
+      ${createRatingStars(product.rating)}
+      <span class="stock-count ${product.stock < 1 ? 'out-of-stock' : ''}">
+        ${product.stock < 1 ? 'Out of stock' : `${product.stock} left`}
+      </span>
+    </div>
+    <div class="price-cart-container">
+      <p>₦${product.price.toFixed(2)}</p>
+      <button class="add-to-cart" ${product.stock < 1 ? 'disabled' : ''}>
+        <i class="fas fa-cart-plus"></i>
+      </button>
+    </div>
+  `;
+
+  if (product.stock > 0) {
+    productElement.querySelector('button').addEventListener('click', async () => {
+      await addToCart(product);
+    });
+    
+    productElement.querySelector('img').addEventListener('click', () => {
+      window.location.href = `productdetails.html?id=${product.id}`;
+    });
+  }
+
+  return productElement;
+}
+
+async function addToCart(product) {
+  try {
+    const userCartRef = doc(db, "users", currentUser.uid);
+    const productRef = doc(db, 'products', product.id);
+    const productSnap = await getDoc(productRef);
+    
+    if (!productSnap.exists() || productSnap.data().stock < 1) {
+      showError('This product is no longer available');
+      return;
+    }
+
+    const cartSnap = await getDoc(userCartRef);
+    const currentCart = cartSnap.data().cart || [];
+    const existingItem = currentCart.find(item => item.id === product.id);
+
+    if (existingItem) {
+      if (existingItem.quantity >= productSnap.data().stock) {
+        showError('Maximum available quantity reached');
+        return;
+      }
+      const updatedCart = currentCart.map(item => 
+        item.id === product.id 
+          ? {...item, quantity: item.quantity + 1} 
+          : item
+      );
+      await updateDoc(userCartRef, { cart: updatedCart });
+    } else {
+      if (currentCart.length >= MAX_CART_ITEMS) {
+        showError(`Cart limit reached (max ${MAX_CART_ITEMS} different products)`);
+        return;
+      }
+      await updateDoc(userCartRef, {
+        cart: arrayUnion({
+          ...product,
+          quantity: 1
+        })
+      });
+    }
+    
+    showCartNotification();
+  } catch (error) {
+    console.error('Error adding to cart:', error);
+    showError('Failed to add item to cart');
+  }
+}
+
+async function updateCartCount() {
+  try {
+    const userCartRef = doc(db, "users", currentUser.uid);
+    const cartSnap = await getDoc(userCartRef);
+    const cart = cartSnap.exists() ? cartSnap.data().cart : [];
+    
+    const countElement = document.getElementById('cartCount');
+    const uniqueItems = cart.length;
+    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+    
+    countElement.textContent = totalItems;
+    countElement.title = `${uniqueItems}/${MAX_CART_ITEMS} different products`;
+    countElement.style.backgroundColor = uniqueItems >= MAX_CART_ITEMS ? 'orange' : 'red';
+  } catch (error) {
+    console.error('Error updating cart count:', error);
+  }
+}
+
+function showError(message) {
+  const errorDiv = document.createElement('div');
+  errorDiv.className = 'error-notification';
+  errorDiv.textContent = message;
+  document.body.appendChild(errorDiv);
+  setTimeout(() => errorDiv.remove(), 3000);
+}
+
+function showCartNotification() {
+  const notification = document.createElement('div');
+  notification.innerHTML = `
+    <div style="
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: white;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    ">
+      <i class="fas fa-check-circle" style="color: green;"></i>
+      Item added to cart!
+    </div>
+  `;
+  document.body.appendChild(notification);
+  setTimeout(() => notification.remove(), 2000);
+}
+
+// Back Button Functionality
+document.getElementById('backButton').addEventListener('click', () => {
+  window.location.href = 'landing.html';
+});
+
+document.getElementById('cartIcon').addEventListener('click', () => {
+  window.location.href = 'cart.html';
+});
+
+window.addEventListener('beforeunload', () => {
+  if (unsubscribeProducts) unsubscribeProducts();
+  if (unsubscribeCart) unsubscribeCart();
+});
+  </script>
+</body>
+</html>

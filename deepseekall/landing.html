@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home - SBCNG</title>
+  <link rel="stylesheet" href="landing.css">
+  <style>
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <!-- Loader -->
+  <div class="loader-container" id="loaderContainer">
+    <div class="loader" id="loader"></div>
+  </div>
+
+  <!-- Page Content -->
+  <header>
+    <img src="https://via.placeholder.com/50" alt="Profile" class="profile-pic" id="profilePic">
+    <a href="profile.html" id="userName" style="text-decoration: none; color: white; font-size: 1.2em;">
+      Loading...
+    </a>
+  </header>
+
+  <div class="search-cart-container">
+    <div class="search-bar">
+      <input type="text" placeholder="Search products or categories..." id="searchInput">
+      <div class="search-suggestions" id="searchSuggestions"></div>
+      <i class="fas fa-search" style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); color: #ff4500;"></i>
+    </div>
+    <div class="cart-icon" id="cartIcon">
+      <i class="fas fa-shopping-cart" style="font-size: 1.5em; color: white;"></i>
+      <span class="cart-count" id="cartCount">0</span>
+    </div>
+  </div>
+
+  <div class="categories-bar">
+    <div class="category-chip active" data-category="uncategorized">All Products</div>
+    <div class="category-chip" data-category="men">Men</div>
+    <div class="category-chip" data-category="electronics">Electronics</div>
+    <div class="category-chip" data-category="women">Women</div>
+    <div class="category-chip" data-category="home">Home</div>
+    <div class="category-chip" data-category="sports">Sports</div>
+    <div class="category-chip" data-category="kids">Kids</div>
+    <div class="category-chip" data-category="toys">Toys</div>
+    <div class="category-chip" data-category="appliances">Appliances</div>
+  </div>
+
+  <main>
+    <div id="products-container"></div>
+  </main>
+
+  
+
+<script type="module" src="landing.js"></script>
+</body>
+</html>
+

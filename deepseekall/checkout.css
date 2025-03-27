@@ -1,0 +1,91 @@
+body {
+    font-family: cursive;
+}
+.checkout-container { 
+    max-width: 800px; 
+    margin: 2rem auto; 
+    padding: 2rem; 
+    box-shadow: 0 2px 15px rgba(0,0,0,0.1); 
+    background: white; 
+    border-radius: 10px; 
+}
+.loading-overlay { 
+    display: none; 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    right: 0; 
+    bottom: 0; 
+    background: rgba(255, 255, 255, 0.9); 
+    z-index: 9999; 
+    justify-content: center; 
+    align-items: center; 
+}
+.error-message { 
+    color: #dc3545; 
+    padding: 1rem; 
+    background: #ffe6e6; 
+    border-radius: 4px; 
+    margin: 1rem 0; 
+    display: none; 
+}
+.cart-item-image {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    border-radius: 10px;
+}
+.cart-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+.cart-item h6 {
+    margin: 0;
+    font-size: 1em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.cart-item .text-success {
+    font-weight: bold;
+}
+.checkout-container h2 {
+    margin-bottom: 1.5rem;
+}
+.checkout-container .card {
+    margin-bottom: 1.5rem;
+}
+.checkout-container .card-body {
+    padding: 1.5rem;
+}
+.checkout-container .btn-primary {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+.checkout-container .btn-primary:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+}
+
+/* Back Button Styles */
+.back-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+    background: orangered;
+    color: white;
+    padding: 10px;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.back-button i {
+    font-size: 1.5em;
+}
