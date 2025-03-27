@@ -1,52 +1,115 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Welcome - SBCNG</title>
-  <link rel="stylesheet" href="welcome.css">
   <style>
+    * { box-sizing: border-box; 
+      font-family: cursive;
+      }
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      /* font-family: Arial, sans-serif; */
+      
+    }
+    #loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: #f9f9f9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+    #loader img {
+      max-width: 90%;
+      height: 30%;
+      border-radius: 40px;
+    }
+    .container {
+      width: 90%;
+      max-width: 375px;
+      text-align: center;
+      display: none;
+    }
+    button {
+      padding: 15px;
+      width: 100%;
+      font-size: 1.1em;
+      border: none;
+      border-radius: 35px;
+      background-color: orangered;
+      color: #fff;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+    button:hover { background-color: orange }
+    span { font-family: cursive; color: orangered; font-size: 50px }
+    sub { font-size: 10px; color: black; font-weight: 1500; font-family: Verdana, Geneva, Tahoma, sans-serif; }
+
+    .shippingicons{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2em;
+      width: 100%;
+      text-align: center;
+    }
+    .shippingicons div{
+      height: 5%;
+      width: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
     
+    .shippingicons img{
+
+      border-radius: 50%;
+      width: 50px;
+      background-color:rgb(253, 209, 151);
+    }
   </style>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-  <div class="modal-overlay" id="modalOverlay"></div>
-  <div class="auth-modal" id="authModal">
-    <h2>Sign In Required</h2>
-    <p>Only registered users can add to cart or view cart</p>
-    <button class="auth-button" onclick="window.location.href='deepseekall/index.html'">
-      Sign In / Register
-    </button>
+  <div id="loader">
+    <img src="./WhatsApp Image 2025-02-11 at 2.29.25 AM.jpeg" alt="Loader">
   </div>
 
-  <div class="search-cart-container">
-    <div class="search-bar">
-      <input type="text" placeholder="Search products or categories..." id="searchInput">
-      <div class="search-suggestions" id="searchSuggestions"></div>
-      <i class="fas fa-search" style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%);"></i>
-    </div>
-    <div class="cart-icon" id="cartIcon">
-      <i class="fas fa-shopping-cart" style="font-size: 1.5em; color: orangered;"></i>
-    </div>
+  <div class="container" id="mainContent">
+    <h1 style="font-family:Verdana, Geneva, Tahoma, sans-serif;">
+      Welcome to <span>SBC<sub>NG</sub></span>
+    </h1>
+    <br><br>
+    <div class="shippingicons"> 
+    
+      <div> <img src="iconamoon--delivery-fast-light.svg" alt="" > <p><b style="font-size: medium;">Fast shipping <br> on all orders</b></p></div>
+      <div> <img src="tdesign--store.svg" alt="" > <p><b style="font-size: medium;"> Return within <br> 21d from purchase</b></p></div>
+      
+   </div>
+   <br> <br><br>
+    <button onclick="window.location.href='method.html'">Sign In / Register</button>
   </div>
 
-  <div class="categories-bar">
-    <div class="category-chip active" data-category="uncategorized">All Products</div>
-    <div class="category-chip" data-category="men">Men</div>
-    <div class="category-chip" data-category="electronics">Electronics</div>
-    <div class="category-chip" data-category="women">Women</div>
-    <div class="category-chip" data-category="home">Home</div>
-    <div class="category-chip" data-category="sports">Sports</div>
-    <div class="category-chip" data-category="kids">Kids</div>
-    <div class="category-chip" data-category="toys">Toys</div>
-    <div class="category-chip" data-category="appliances">Appliances</div>
-  </div>
-
-  <main>
-    <div id="products-container">Loading products...</div>
-  </main>
-
-  <script type="module" src="welcome.js"></script>
+  <script>
+    window.addEventListener("load", () => {
+      setTimeout(() => {
+        document.getElementById("loader").style.display = "none";
+        document.getElementById("mainContent").style.display = "block";
+      }, 2500);
+    });
+  </script>
 </body>
 </html>

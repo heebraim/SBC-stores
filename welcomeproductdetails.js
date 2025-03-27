@@ -41,7 +41,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebas
     // Load Product
     async function loadProduct() {
       const productId = new URLSearchParams(window.location.search).get('id');
-      if (!productId) window.location.href = 'welcome.html';
+      if (!productId) window.location.href = 'index.html';
 
       try {
         const productRef = doc(db, 'products', productId);
@@ -57,7 +57,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebas
         }
       } catch (error) {
         console.error('Error loading product:', error);
-        window.location.href = 'welcome.html';
+        window.location.href = 'index.html';
       }
     }
 
