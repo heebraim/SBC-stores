@@ -25,7 +25,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebas
       try {
         await sendPasswordResetEmail(auth, email);
         alert('Password reset email sent! Check your inbox.');
-        window.location.href = 'login.html';
+        window.location.href = 'Login.html';
       } catch (error) {
         alert('Error: ' + error.message);
       }
