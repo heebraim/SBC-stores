@@ -71,7 +71,7 @@
       body {
         background-color: #f9f9f9;
         padding: 20px;
-        font-family: cursive;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
       }
   
       .back-button {
